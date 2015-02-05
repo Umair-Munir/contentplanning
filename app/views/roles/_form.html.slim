@@ -1,0 +1,6 @@
+= simple_form_for @role, :html => { :class => "form-horizontal", :enctype => "multipart/form-data", :id => "js-upload-form" } do |f|
+  = f.input :title
+  = error_span(@role[:title])
+  = f.button :submit, :class => 'btn-primary'
+  '
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), roles_path, :class => 'btn btn-default'
