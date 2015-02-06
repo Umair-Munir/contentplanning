@@ -17,7 +17,7 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require bootstrap
 //= require twitter/bootstrap
-//= require bootstrap-wysihtml5
+//= require bootstrap
 //= require turbolinks
 //= require selectize
 //= require select2

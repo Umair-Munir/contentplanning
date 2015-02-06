@@ -9,6 +9,7 @@ $(document).ready ->
       toolbar: 'toolbar'
       parserRules: wysihtml5ParserRules)
 
+#  $('#description').wysihtml5()
   $('#fileupload').fileupload
     dataType: 'json'
     add: (e, data) ->

@@ -41,8 +41,12 @@ class ArticlesController < ApplicationController
   def upload_image
     @article.image = params[:file]
     @article.save
-    respond_with @article
+    #respond_with @article
+    respond_to do |format|
+        format.json {  render :nothing => true }
+      end
   end
+
 
   private
     def set_article
@@ -50,6 +54,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :description, :image, :status_id, :category_id, :user_id, :tag_list,:files)
+      params.require(:article).permit(:title, :description, :image, :status_id, :category_id, :user_id, :tag_list, :files, :created_flag)
     end
 end
