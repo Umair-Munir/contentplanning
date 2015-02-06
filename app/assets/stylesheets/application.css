@@ -23,6 +23,7 @@
  *=require bootstrap.min
 *= require jquery.fileupload
 *= require jquery.fileupload-ui
+*= require dropzone/dropzone
  *= require_tree .
  *= require_self
  */

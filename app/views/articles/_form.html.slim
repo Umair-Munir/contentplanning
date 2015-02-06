@@ -1,4 +1,4 @@
-= simple_form_for @article, :html => { :class => "form-horizontal" } do |f|
+= simple_form_for @article, :html => { :class => "form-horizontal",  id: "my-awesome-dropzone" } do |f|
   .form
     = f.input :title
     = error_span(@article[:title])
@@ -7,9 +7,26 @@
     = error_span(@article[:description])
     = f.association :status, label_method: :name, value_method: :id, include_blank: false, prompt: "Choose One.."
     = f.association :category, as: :radio_buttons, label: 'Verticals'
-    = f.input :image, input_html:{id:"fileupload"}
+    = simple_form_for @article, :html => {:class => "dropzone"} do |f|
+    /.removeAllImages X
+    #drop_zone
+      form#fbDropZone.dropzone action=upload_image_article_path(@article)
+
+
+    /= f.input :image, input_html:{id:"fileupload"}, :multiple => true
+    /.dropzone
+      /|p.dz-message You can drop an image here or click to upload.
+      /
+      /.fallback
+      /  = f.file_field :image
+    /= f.file_field :image, input_html:{id:"fileupload", name: 'upload[uploaded_file]'}, :multiple => true
+
+    /#dragandrophandler
+    /  |Drag & Drop Files Here
+    /#status1
     = f.input :tag_list, input_html: {id: 'tags', value: f.object.tag_list.join(",")}
     = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
+    = f.input :created_flag, :as => :hidden, :input_html => { :value => true }
     = error_span(@article[:image])
     = f.button :submit, :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn btn-default'

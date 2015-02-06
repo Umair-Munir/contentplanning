@@ -45,8 +45,10 @@ gem 'acts-as-taggable-on', '~> 3.4.3'
 gem 'sanitize', '~> 3.1.0'
 gem 'cancan', '~> 1.6.10'
 gem 'jquery-fileupload-rails', '~> 0.4.4'
+gem 'dropzonejs-rails', '~> 0.7.0'
+gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.4'
-group :'development.rb.sample' do
+group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'binding_of_caller'
   #gem 'better_errors'

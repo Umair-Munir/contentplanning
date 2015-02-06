@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+
+
   resources :roles
 
-  resources :articles
+  resources :articles do
+    member do
+      post :upload_image
+    end
+  end
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

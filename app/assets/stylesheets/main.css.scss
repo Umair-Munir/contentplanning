@@ -16,3 +16,25 @@ $color_log_cabin_approx: #222;
     border-color: $color_log_cabin_approx;
   }
 }
+
+#dragandrophandler
+{
+  border:2px dotted #0B85A1;
+  width:400px;
+  color:#92AAB0;
+  text-align:left;vertical-align:middle;
+  padding:10px 10px 10 10px;
+  margin-bottom:10px;
+  font-size:200%;
+}
+#drop_zone {
+  width: 50%;
+  border: 2px dashed #BBB;
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+  color: #BBB;
+}
+.removeAllImages {
+  cursor:pointer;
+}

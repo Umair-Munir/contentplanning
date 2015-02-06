@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.min.js
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require bootstrap
 //= require twitter/bootstrap
 //= require bootstrap-wysihtml5
@@ -22,4 +25,7 @@
 //= require wysihtml5-0.3.0.min
 //= require main
 //= require jquery-fileupload
+//= require upload
+//= require dropzone
+//= require dropzone-preview
 //= require_tree .
