@@ -1,0 +1,15 @@
+= simple_form_for @user, :html => { :class => "form-horizontal" } do |f|
+  = f.input :first_name
+  = error_span(@user[:first_name])
+  = f.input :last_name
+  = error_span(@user[:last_name])
+  = f.input :email
+  = error_span(@user[:email])
+  - if Role.any?
+    = f.label :roles
+  = f.fields_for :role do |role|
+    = role.collection_check_boxes :role_ids, Role.all, :id, :title
+  br
+  = f.button :submit, :class => 'btn-primary'
+
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), users_path, :class => 'btn btn-default'

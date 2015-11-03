@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.5'
+ruby '2.2.2'
 
 # Core stuff
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -48,6 +48,8 @@ gem 'jquery-fileupload-rails', '~> 0.4.4'
 gem 'dropzonejs-rails', '~> 0.7.0'
 gem 'carrierwave', '~> 0.10.0'
 gem 'rmagick', '~> 2.13.4'
+gem 'devise_invitable', '~> 1.4.0'
+gem 'mailcatcher','~> 0.6.1'
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'binding_of_caller'

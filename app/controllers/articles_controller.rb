@@ -2,14 +2,16 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy, :upload_image]
 
   respond_to :html
-
+  #load_and_authorize_resource
   def index
     @articles = current_user.articles
     respond_with(@articles)
   end
 
   def show
+
     respond_with(@article)
+
   end
 
   def new
@@ -28,7 +30,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article.update(article_params)
-    current_user.articles.clean
+    Article.clean
     respond_with(@article)
   end
 
@@ -41,10 +43,19 @@ class ArticlesController < ApplicationController
   def upload_image
     @article.image = params[:file]
     @article.save
-    #respond_with @article
-    respond_to do |format|
-        format.json {  render :nothing => true }
+      respond_to do |format|
+        format.json {  render :json => @article }
       end
+  end
+
+  def remove_image
+    @article = Article.find_by_id params[:id]
+    @article.image.destroy
+    @article.save
+    respond_to do |format|
+      format.js
+      format.json {  render :json => @article }
+    end
   end
 
 

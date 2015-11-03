@@ -9,11 +9,15 @@
     = f.association :category, as: :radio_buttons, label: 'Verticals'
     = simple_form_for @article, :html => {:class => "dropzone"} do |f|
     #drop_zone
-      form#fb-drop-zone.dropzone action=upload_image_article_path(@article)
+      form#fb-drop-zone.dropzone.dz-message action=upload_image_article_path(@article, :remote => true)
+    - if @article.image.file?
+      #edit_image
+        = image_tag @article.image.url(:thumb)
+        = link_to 'Remove Image', remove_image_article_path(@article.id), method: :delete, :remote => true
     = f.input :tag_list, input_html: {id: 'tags', value: f.object.tag_list.join(",")}
     = f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }
     = f.input :created_flag, :as => :hidden, :input_html => { :value => true }
     = error_span(@article[:image])
-    = f.button :submit, :class => 'btn-primary'
+    = f.button :submit, 'Save', :class => 'btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn btn-default'
 

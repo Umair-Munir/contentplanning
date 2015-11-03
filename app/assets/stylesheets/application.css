@@ -17,7 +17,7 @@
  *= require selectize.default
  *= require select2
  *= require select2-bootstrap
- *=require twitter-bootstrap-static/fontawesome
+ *#=require twitter-bootstrap-static/fontawesome
  *=require wysiwyg
  *=require font-awesome
  *=require bootstrap.min
