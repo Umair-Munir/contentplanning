@@ -1,0 +1,6 @@
+<% if @status == 'success' %>
+    jQuery('form #edit_image img').remove();
+    console.log ('here');
+    alert ('here');
+//    $('#edit_image').html('<%#= image_tag @article.image.url(:thumb)%>')
+<% end %>

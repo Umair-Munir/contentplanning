@@ -11,7 +11,8 @@ table class="table table-striped"
       th= model_class.human_attribute_name(:status)
       th= model_class.human_attribute_name(:verticals)
       th= model_class.human_attribute_name(:tags)
-      th=t '.actions', :default => t("helpers.actions")
+      - if current_user.admin? || current_user.editor?
+        th=t '.actions', :default => t("helpers.actions")
   tbody
     - @articles.each do |article|
       tr
@@ -23,9 +24,11 @@ table class="table table-striped"
         td= article.category.try(:name)
         td= article.tags.map{|t| t.name}.join(",")
         td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_path(article), :class => 'btn btn-default btn-xs'
-          '
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), article_path(article), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          - if can? :manage, article
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_path(article), :class => 'btn btn-default btn-xs'
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), article_path(article), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+          - elsif can? :edit, article
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_path(article), :class => 'btn btn-default btn-xs'
 
 /= link_to t('.new', :default => t("helpers.links.new")), new_article_path, :class => 'btn btn-primary'
 
